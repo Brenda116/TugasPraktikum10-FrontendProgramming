@@ -5,7 +5,7 @@ export default function Contact() {
     <div className="space-y-16">
       <section className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg animate-fadeIn">
         <Image
-          src="/office.jpg"
+          src="/contact.jpg"
           alt="Brend Tech Contact"
           fill
           className="object-cover object-center"
@@ -67,4 +67,5 @@ export default function Contact() {
       </section>
     </div>
   );
+
 }
