@@ -1,10 +1,10 @@
 "use client";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 type Params = {
-  params: { name: string };
-};
+  params: { name: string} | Promise<{ name: string }> };
 
 const members: Record<
   string,
@@ -81,7 +81,11 @@ const members: Record<
 };
 
 export default function TeamMemberPage({ params }: Params) {
-  const key = params.name.toLowerCase();
+  const resolvedParams =
+    typeof (params as any).then === "function"
+      ? React.use(params as Promise<{ name: string }>)
+      : (params as { name: string });
+  const key = resolvedParams.name.toLowerCase();
   const member = members[key];
 
   if (!member) {
